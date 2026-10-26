@@ -86,7 +86,7 @@ class FocusTimerService : Service() {
         )
 
         return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("🛡️ FocusShield Active (Strict Mode)")
+            .setContentTitle("🎯 GoalYourDream Active (Strict Mode)")
             .setContentText(contentText)
             .setSmallIcon(android.R.drawable.ic_lock_idle_lock)
             .setContentIntent(pendingIntent)

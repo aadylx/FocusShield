@@ -16,7 +16,7 @@ class AntiUninstallAdminReceiver : DeviceAdminReceiver() {
         super.onEnabled(context, intent)
         Toast.makeText(
             context,
-            "FocusShield: Anti-Uninstall protection is now ACTIVE",
+            "GoalYourDream: Anti-Uninstall protection is now ACTIVE",
             Toast.LENGTH_LONG
         ).show()
     }
@@ -25,7 +25,7 @@ class AntiUninstallAdminReceiver : DeviceAdminReceiver() {
         super.onDisabled(context, intent)
         Toast.makeText(
             context,
-            "FocusShield: Anti-Uninstall protection disabled",
+            "GoalYourDream: Anti-Uninstall protection disabled",
             Toast.LENGTH_SHORT
         ).show()
     }

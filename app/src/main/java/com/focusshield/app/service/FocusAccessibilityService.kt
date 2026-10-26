@@ -64,6 +64,7 @@ class FocusAccessibilityService : AccessibilityService() {
                 "Uninstall",
                 "Force stop",
                 "Deactivate",
+                "GoalYourDream",
                 "FocusShield",
                 "Device admin",
                 "Storage & cache",

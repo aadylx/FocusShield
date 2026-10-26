@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   build:
-    name: Build FocusShield APK
+    name: Build GoalYourDream APK
     runs-on: ubuntu-latest
 
     steps:
@@ -41,27 +41,27 @@ jobs:
       - name: Stage APK Output
         run: |
           mkdir -p build-output
-          cp app/build/outputs/apk/debug/*.apk build-output/FocusShield-debug.apk
+          cp app/build/outputs/apk/debug/*.apk build-output/GoalYourDream-debug.apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: FocusShield-APK
-          path: build-output/FocusShield-debug.apk
+          name: GoalYourDream-APK
+          path: build-output/GoalYourDream-debug.apk
           retention-days: 14
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0-${{ github.run_number }}
-          name: "FocusShield Release v1.0 (Build ${{ github.run_number }})"
+          name: "GoalYourDream Release v1.0 (Build ${{ github.run_number }})"
           body: |
-            ### 🛡️ FocusShield APK
+            ### 🎯 GoalYourDream APK
             - Strict Mode (Anti-Uninstall protection)
             - YouTube Study Mode (Shorts blocker)
             - Whitelist (YouTube & Google allowed)
             - Persistent study timer
-          files: build-output/FocusShield-debug.apk
+          files: build-output/GoalYourDream-debug.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true

@@ -62,7 +62,7 @@ class OverlayWindowManager(private val context: Context) {
 
             // Title
             val titleText = TextView(context).apply {
-                text = "🛡️ Focus Shield Active"
+                text = "🎯 GoalYourDream Active"
                 setTextColor(Color.WHITE)
                 textSize = 22f
                 typeface = android.graphics.Typeface.DEFAULT_BOLD

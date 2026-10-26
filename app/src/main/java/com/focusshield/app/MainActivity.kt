@@ -141,10 +141,10 @@ fun FocusDashboardScreen(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Text(text = "🛡️", fontSize = 32.sp)
+            Text(text = "🎯", fontSize = 32.sp)
             Spacer(modifier = Modifier.width(10.dp))
             Text(
-                text = "FocusShield",
+                text = "GoalYourDream",
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
@@ -437,7 +437,7 @@ fun PermissionCheckSection(context: Context) {
                         putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, admin)
                         putExtra(
                             DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-                            "FocusShield uses Device Admin to prevent uninstalling during active focus hours."
+                            "GoalYourDream uses Device Admin to prevent uninstalling during active focus hours."
                         )
                     }
                     context.startActivity(intent)
