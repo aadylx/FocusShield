@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">FocusShield</string>
+    <string name="admin_label">FocusShield Strict Protection</string>
+    <string name="admin_description">Prevents uninstalling or force-stopping FocusShield during an active study or focus session.</string>
+    <string name="accessibility_service_description">Monitors foreground apps to block distractions, filter YouTube Shorts, and protect focus sessions.</string>
+</resources>

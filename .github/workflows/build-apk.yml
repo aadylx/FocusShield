@@ -1,0 +1,68 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build FocusShield APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Ensure Gradle Wrapper & Build APK
+        run: |
+          if [ ! -f ./gradlew ]; then
+            echo "Generating Gradle Wrapper..."
+            gradle wrapper --gradle-version 8.10.2
+          fi
+          chmod +x gradlew
+          ./gradlew assembleDebug --stacktrace
+
+      - name: Rename APK for Easy Identification
+        run: |
+          mkdir -p build-output
+          cp app/build/outputs/apk/debug/*.apk build-output/FocusShield-debug.apk
+
+      - name: Upload APK Artifact (Direct Download)
+        uses: actions/upload-artifact@v4
+        with:
+          name: FocusShield-APK
+          path: build-output/FocusShield-debug.apk
+          retention-days: 14
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0-${{ github.run_number }}
+          name: "FocusShield Release v1.0 (Build ${{ github.run_number }})"
+          body: |
+            ### 🛡️ FocusShield APK
+            - Strict Mode (Anti-Uninstall protection)
+            - YouTube Study Mode (Shorts blocker)
+            - Whitelist (YouTube & Google allowed)
+            - Persistent study timer
+          files: build-output/FocusShield-debug.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
